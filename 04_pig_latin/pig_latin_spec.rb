@@ -4,7 +4,7 @@
 #
 # Rule 2: If a word begins with a consonant sound, move it to the end of the word, and then add an "ay" sound to the end of the word.
 
-require "pig_latin"
+require_relative "pig_latin"
 
 describe "#translate" do
 
@@ -28,29 +28,39 @@ describe "#translate" do
   #   expect(s).to eq("eatay iepay")
   # end
 
-  # it "translates a word beginning with three consonants" do
-  #   expect(translate("three")).to eq("eethray")
-  # end
+  it "translates a word beginning with three consonants" do
+    expect(translate("three")).to eq("eethray")
+  end
 
-  # it "counts 'sch' as a single phoneme" do
-  #   s = translate("school")
-  #   expect(s).to eq("oolschay")
-  # end
+  it "counts 'sch' as a single phoneme" do
+    s = translate("school")
+    expect(s).to eq("oolschay")
+  end
 
-  # it "counts 'qu' as a single phoneme" do
-  #   s = translate("quiet")
-  #   expect(s).to eq("ietquay")
-  # end
+  it "counts 'qu' as a single phoneme" do
+    s = translate("quiet")
+    expect(s).to eq("ietquay")
+  end
 
-  # it "counts 'qu' as a consonant even when it's preceded by a consonant" do
-  #   s = translate("square")
-  #   expect(s).to eq("aresquay")
-  # end
+  it "counts 'qu' as a consonant even when it's preceded by a consonant" do
+    s = translate("square")
+    expect(s).to eq("aresquay")
+  end
 
-  # it "translates many words" do
-  #   s = translate("the quick brown fox")
-  #   expect(s).to eq("ethay ickquay ownbray oxfay")
-  # end
+  it "translates many words" do
+    s = translate("the quick brown fox")
+    expect(s).to eq("ethay ickquay ownbray oxfay")
+  end
+
+  it "retains capitalization" do
+    s = translate("Bitmaker")
+    expect(s).to eq("Itmakerbay")
+  end
+
+  xit "retains punctuation" do
+    s = translate("However, he went home (sad) that day!")
+    expect(s).to eq("Oweverhay, ehay entway omehay (adsay) atthay adday!")
+  end
 
   # Extra challenges:
   # Write tests and get them to pass for:
